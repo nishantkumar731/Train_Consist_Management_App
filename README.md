@@ -1,67 +1,86 @@
-# Train-_Consist-_Management_App
 # 🚆 Train Consist Management App
 
-A **console-based Java application** that simulates how a railway system manages a train’s consist (collection of bogies attached to an engine).
-
----
-
 ## 📌 Overview
+The **Train Consist Management App** is a console-based Java application that simulates how a railway system manages a train’s consist — a collection of bogies attached to an engine.
 
-This application demonstrates core Java concepts through a realistic railway scenario. It allows managing different types of bogies, tracking capacity, and ensuring safety compliance.
-
----
-
-## 🎯 Features
-
-- 🚃 Passenger bogies:
-    - Sleeper
-    - AC Chair
-    - First Class
-    - Seat capacity tracking
-
-- 📦 Goods bogies:
-    - Rectangular
-    - Cylindrical
-    - Cargo type handling
-    - Safety constraints
-
-- 📊 Train consist management:
-    - Track total bogies
-    - Monitor composition
-    - Capacity calculation
-    - Safety validation
+This project demonstrates the practical use of **Core Java** and **data structures** through real-world railway scenarios such as adding, removing, and managing bogies dynamically.
 
 ---
 
-## 🧩 Use Case 1: Initialize Train
+## 🎯 Use Case: UC2 – Add Passenger Bogies (ArrayList Operations)
 
-### ✔ Goal
-Initialize the train consist and display the initial state.
+### 📖 Description
+This use case focuses on managing passenger bogies dynamically using Java's `ArrayList`.
 
-### 🔄 Flow
+It allows:
+- Adding passenger bogies
+- Removing bogies
+- Checking if a bogie exists
+- Displaying the train composition
+
+---
+
+## ⚠️ Drawback of UC1
+- Train consist is empty
+- No dynamic operations available
+- Cannot simulate real-world railway behavior
+
+---
+
+## 🎯 Goal
+To enable **dynamic insertion, deletion, and validation** of passenger bogies using `ArrayList`.
+
+---
+
+## 👤 Actor
+**User**
+
+---
+
+## 🔄 Flow of Execution
 1. User runs the program
-2. Application prints welcome message
-3. Train consist is initialized
-4. Initial bogie count is displayed
+2. Passenger bogies are added
+3. Bogies are displayed
+4. A bogie is removed
+5. Existence is checked
+6. Final list is displayed
 
 ---
 
-## 🛠️ Technologies Used
+## 🧠 Key Concepts Used
 
-- Java
-- Java Collections Framework (`ArrayList`, `List`)
+- **ArrayList**
+  - Dynamic resizable collection
+
+- **add()**
+  - Inserts elements
+
+- **remove()**
+  - Deletes elements
+
+- **contains()**
+  - Checks existence
+
+- **Insertion Order Preservation**
+  - Maintains order of elements
+
+- **CRUD Operations**
+  - Create, Read, Update, Delete
 
 ---
 
-## 🧠 Concepts Covered
+## ✅ Key Requirements
 
-- Classes & Objects
-- `main()` method (program entry point)
-- `static` keyword
-- Dynamic collections using `ArrayList`
-- List interface abstraction
-- Console output (`System.out.println()`)
+- Create `ArrayList<String>` for passenger bogies
+- Add:
+  - Sleeper
+  - AC Chair
+  - First Class
+- Display list after adding
+- Remove "AC Chair"
+- Check if "Sleeper" exists
+- Display final list
 
 ---
 
-## 📂 Project Structure
+
