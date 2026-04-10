@@ -12,27 +12,28 @@ Each use case introduces Java concepts through real-world railway scenarios.
 
 ---
 
-## 🎯 Use Case: UC6 – Map Bogie to Capacity (HashMap)
+## 🎯 Use Case: UC7 – Sort Bogies by Capacity (Comparator)
 
 ### 📖 Description
-This use case demonstrates how to associate each bogie with its **capacity** using a key–value mapping structure (`HashMap`).
+This use case demonstrates how to sort bogies based on their **seating capacity** using a **custom Comparator**.
 
-This allows the system to store and retrieve **operational data** such as:
-- Seating capacity (passenger bogies)
-- Load capacity (goods bogies)
+Instead of just storing data, the system now enables:
+- Ranking bogies by capacity
+- Comparing different classes
+- Supporting planning and reporting
 
 ---
 
-## ⚠️ Drawback of UC5
-- Stored only bogie names
-- ❌ No way to associate capacity
-- ❌ Cannot perform validation or analysis
-- ❌ No attribute mapping
+## ⚠️ Drawback of UC6
+- Data stored using `HashMap`
+- ❌ No ordering of bogies
+- ❌ No ranking or comparison
+- ❌ Difficult for planning and analysis
 
 ---
 
 ## 🎯 Goal
-To map each bogie to its **capacity** using `HashMap`.
+To sort passenger bogies based on their **capacity** using `Comparator`.
 
 ---
 
@@ -43,66 +44,83 @@ To map each bogie to its **capacity** using `HashMap`.
 
 ## 🔄 Flow of Execution
 1. User runs the program
-2. Bogie-capacity mapping is created
-3. Data is inserted into `HashMap`
-4. System iterates through entries
-5. Bogie capacities are displayed
-6. Specific capacity lookup is performed
+2. Bogie objects are created
+3. Bogies are stored in a list
+4. Comparator is applied
+5. Bogies are sorted by capacity
+6. Sorted list is displayed
 
 ---
 
 ## 🧠 Key Concepts Used
 
-- **HashMap**
-  - Stores key–value pairs
+- **Comparator Interface**
+  - Custom sorting logic
 
-- **Map Interface**
-  - Defines mapping between keys and values
+- **Custom Class (Bogie)**
+  - Stores name and capacity
 
-- **put()**
-  - Inserts bogie and capacity
+- **List Collection**
+  - Stores multiple bogie objects
 
-- **get()**
-  - Retrieves capacity using bogie name
+- **sort()**
+  - Applies sorting logic
 
-- **entrySet()**
-  - Iterates over key–value pairs
+- **Lambda Expression**
+  - Simplifies comparator definition
 
-- **Fast Lookup**
-  - Constant-time access using keys
+- **Separation of Data & Logic**
+  - Improves code design
 
 ---
 
 ## ✅ Key Requirements
 
-- Create `HashMap<String, Integer>`
+- Create a `Bogie` class with:
+  - name
+  - capacity
+- Create `List<Bogie>`
 - Add bogies:
   - Sleeper → 72
-  - AC Chair → 60
+  - AC Chair → 56
   - First Class → 24
-- Use `put()` for insertion
-- Iterate using `entrySet()`
-- Display bogie and capacity
+- Use `Comparator.comparingInt()`
+- Sort and display bogies
 
 ---
 
 ## 💻 Sample Code
 
 ```java
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
-public class TrainConsistUC6 {
+class Bogie {
+    String name;
+    int capacity;
+
+    Bogie(String name, int capacity) {
+        this.name = name;
+        this.capacity = capacity;
+    }
+
+    public String toString() {
+        return name + " -> " + capacity;
+    }
+}
+
+public class TrainConsistUC7 {
     public static void main(String[] args) {
 
-        HashMap<String, Integer> bogieCapacity = new HashMap<>();
+        List<Bogie> bogies = new ArrayList<>();
 
-        bogieCapacity.put("Sleeper", 72);
-        bogieCapacity.put("AC Chair", 60);
-        bogieCapacity.put("First Class", 24);
+        bogies.add(new Bogie("Sleeper", 72));
+        bogies.add(new Bogie("AC Chair", 56));
+        bogies.add(new Bogie("First Class", 24));
 
-        for (Map.Entry<String, Integer> entry : bogieCapacity.entrySet()) {
-            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        bogies.sort(Comparator.comparingInt(b -> b.capacity));
+
+        for (Bogie b : bogies) {
+            System.out.println(b);
         }
     }
 }
