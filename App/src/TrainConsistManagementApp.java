@@ -1,29 +1,49 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+
+// Step 1: Create Bogie class
+class Bogie {
+    String name;
+    int capacity;
+
+    // Constructor
+    Bogie(String name, int capacity) {
+        this.name = name;
+        this.capacity = capacity;
+    }
+
+    // toString method for display
+    @Override
+    public String toString() {
+        return name + " -> " + capacity + " seats";
+    }
+}
 
 public class TrainConsistManagementApp {
     public static void main(String[] args) {
 
-        // Step 1: Create HashMap for bogie-capacity mapping
-        HashMap<String, Integer> bogieCapacity = new HashMap<>();
+        // Step 2: Create List of Bogies
+        List<Bogie> bogies = new ArrayList<>();
 
-        // Step 2: Add bogies with their capacities
-        bogieCapacity.put("Sleeper", 72);
-        bogieCapacity.put("AC Chair", 60);
-        bogieCapacity.put("First Class", 24);
+        // Step 3: Add bogies
+        bogies.add(new Bogie("Sleeper", 72));
+        bogies.add(new Bogie("AC Chair", 56));
+        bogies.add(new Bogie("First Class", 24));
 
-        // Step 3: Display bogie capacities
-        System.out.println("Bogie Capacity Details:");
+        // Step 4: Sort bogies by capacity (ascending)
+        bogies.sort(Comparator.comparingInt(b -> b.capacity));
 
-        for (Map.Entry<String, Integer> entry : bogieCapacity.entrySet()) {
-            System.out.println(entry.getKey() + " -> " + entry.getValue() + " seats");
+        // Step 5: Display sorted bogies
+        System.out.println("Bogies sorted by capacity (Ascending):");
+        for (Bogie b : bogies) {
+            System.out.println(b);
         }
 
-        // Step 4: Example lookup
-        String search = "Sleeper";
-        if (bogieCapacity.containsKey(search)) {
-            System.out.println("\nCapacity of " + search + ": "
-                    + bogieCapacity.get(search) + " seats");
+        // Step 6: Sort in descending order (optional)
+        bogies.sort(Comparator.comparingInt((Bogie b) -> b.capacity).reversed());
+
+        System.out.println("\nBogies sorted by capacity (Descending):");
+        for (Bogie b : bogies) {
+            System.out.println(b);
         }
     }
 }
